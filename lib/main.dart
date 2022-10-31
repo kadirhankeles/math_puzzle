@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
                 title: 'Material App',
                 home: Scaffold(
                   
-                  body: GameList()
+                  body: Menu(),
                 ));
           },
         );

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -28,8 +29,8 @@ class gameSelection extends StatelessWidget {
                 Text(gameName, style: GoogleFonts.roboto(textStyle: TextStyle(color:  Color(0xff26c6da), fontSize: 18,fontWeight: FontWeight.w400)),)
               ],
             ),
-            SizedBox(height: 1.h,),
-            Text("______________________________________________",style: TextStyle(color:  Color(0xff26c6da),),),
+            SizedBox(height: 2.h,),
+            Divider(height: 1,thickness: 1, color: Color(0xff26c6da), indent: 4.w, endIndent: 4.w,),
             SizedBox(height: 1.h,),
             Row(children: [
               SizedBox(width: 2.h,),

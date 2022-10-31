@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:math_puzzle/pages/gameList.dart';
 import 'package:math_puzzle/widgets/entryButton.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -57,11 +58,10 @@ class _MenuState extends State<Menu> {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(10),
                     onTap: () {
-                      
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => GameList(),));
                     },
-                    child: Ink(
-                      child: EntryButton(iconImage: iconImage[index], buttonText: buttonText[index]),
-                    ),
+                    child:  EntryButton(iconImage: iconImage[index], buttonText: buttonText[index]),
+                    
                   ),
                 );
                 SizedBox(height: 5.h,);
