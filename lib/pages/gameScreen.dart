@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -13,11 +16,20 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
+  static const maxSeconds = 10;
+  int seconds = maxSeconds;
+  Timer? timer;
   @override
-  TextEditingController deger = TextEditingController();
   int score = 0;
   String text = '';
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    startTimer();
+  }
   Widget build(BuildContext context) {
+
     return Consumer(
       builder: (context, theme theme, widget) {
         return Scaffold(
@@ -43,8 +55,18 @@ class _GameScreenState extends State<GameScreen> {
             ),
           ),
           body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [SizedBox(width: double.infinity,
+              //height: 10,
+              child: LinearProgressIndicator(
+                value: seconds/maxSeconds,
+                minHeight: 5,
+                backgroundColor: Colors.blue,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+              ),),
+              //Text("${seconds}"),
+              SizedBox(height: 24.h,),
+              
               /*  Container(
               height: 6.h,
               width: 25.h,
@@ -80,10 +102,14 @@ class _GameScreenState extends State<GameScreen> {
                   color: theme.karanlik ? Colors.white : Colors.black,
                 ),
                 leftButtonFn: () {
-                  print('left button clicked');
+                  setState(() {
+                    
+                  });
+                  text = '';
+                  
                 },
                 leftIcon: Icon(
-                  Icons.check,
+                  Icons.clear,
                   color: theme.karanlik ? Colors.white : Colors.black,
                 ),
               ),
@@ -98,5 +124,15 @@ class _GameScreenState extends State<GameScreen> {
     setState(() {
       text = text + value;
     });
+  }
+  void startTimer(){
+    timer = Timer.periodic(Duration(seconds: 1), (_) { 
+      if(seconds > 0){setState(() => seconds--);}
+      else stopTimer();
+      
+    });
+  }
+  void stopTimer(){
+    timer?.cancel();
   }
 }

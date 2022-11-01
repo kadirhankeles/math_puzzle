@@ -23,7 +23,6 @@ class MyApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 title: 'Material App',
                 home: Scaffold(
-                  
                   body: Menu(),
                 ));
           },
