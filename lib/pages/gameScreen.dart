@@ -66,7 +66,33 @@ class _GameScreenState extends State<GameScreen> {
               ),),
               //Text("${seconds}"),
               SizedBox(height: 24.h,),
-              
+              GestureDetector(
+                onTap: () {
+                  showModalBottomSheet<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return Container(
+                height: 400,
+                color: theme.karanlik ? Colors.black : Colors.white,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Image.network("https://github.com/jaysavsani07/math-metrix/blob/master/assets/gif/calculator-intro.gif?raw=true"),
+                      SizedBox(height: 2.h,),
+                      ElevatedButton(
+                        child: const Text('Tamam'),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+                },
+                child: Text("Bilgi almak için tıkla!")),
               /*  Container(
               height: 6.h,
               width: 25.h,
